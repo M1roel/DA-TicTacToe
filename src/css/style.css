@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #333;
+    text-align: center;
+    font-size: 2em;
+    line-height: 100px;
+}
+
+.circle {
+    color: red;
+}
+
+.cross {
+    color: blue;
+}
