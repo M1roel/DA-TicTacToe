@@ -1,6 +1,6 @@
 let fields = [
     'circle',
-    null,
+    'cross',
     null,
     null,
     null,
@@ -29,8 +29,9 @@ function render() {
                 if (fields[index] === 'circle') {
                     const svg = generateCircleSVG();
                     td.appendChild(svg);
-                } else {
-                    td.textContent = 'X';
+                } else if (fields[index] === 'cross') {
+                    const svg = generateCrossSVG();
+                    td.appendChild(svg);
                 }
             }
             tr.appendChild(td);
@@ -66,6 +67,57 @@ function generateCircleSVG() {
 
     circle.appendChild(animate);
     svg.appendChild(circle);
+
+    return svg;
+}
+
+function generateCrossSVG() {
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("width", "70");
+    svg.setAttribute("height", "70");
+    svg.setAttribute("viewBox", "0 0 70 70");
+
+    const line1 = document.createElementNS(svgNS, "line");
+    line1.setAttribute("x1", "10");
+    line1.setAttribute("y1", "10");
+    line1.setAttribute("x2", "60");
+    line1.setAttribute("y2", "60");
+    line1.setAttribute("stroke", "#FF0000");
+    line1.setAttribute("stroke-width", "5");
+    line1.setAttribute("stroke-dasharray", "70.71");
+    line1.setAttribute("stroke-dashoffset", "70.71");
+
+    const animate1 = document.createElementNS(svgNS, "animate");
+    animate1.setAttribute("attributeName", "stroke-dashoffset");
+    animate1.setAttribute("from", "70.71");
+    animate1.setAttribute("to", "0");
+    animate1.setAttribute("dur", "2s");
+    animate1.setAttribute("fill", "freeze");
+
+    line1.appendChild(animate1);
+
+    const line2 = document.createElementNS(svgNS, "line");
+    line2.setAttribute("x1", "10");
+    line2.setAttribute("y1", "60");
+    line2.setAttribute("x2", "60");
+    line2.setAttribute("y2", "10");
+    line2.setAttribute("stroke", "#FF0000");
+    line2.setAttribute("stroke-width", "5");
+    line2.setAttribute("stroke-dasharray", "70.71");
+    line2.setAttribute("stroke-dashoffset", "70.71");
+
+    const animate2 = document.createElementNS(svgNS, "animate");
+    animate2.setAttribute("attributeName", "stroke-dashoffset");
+    animate2.setAttribute("from", "70.71");
+    animate2.setAttribute("to", "0");
+    animate2.setAttribute("dur", "2s");
+    animate2.setAttribute("fill", "freeze");
+
+    line2.appendChild(animate2);
+
+    svg.appendChild(line1);
+    svg.appendChild(line2);
 
     return svg;
 }
